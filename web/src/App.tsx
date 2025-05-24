@@ -1,8 +1,8 @@
 import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import client from "./apolloClient";
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import AuthRoute from "./components/AuthRoute";
 // import LoginPage from "./pages/LoginPage";
@@ -14,8 +14,8 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex flex-col min-h-screen">
-          {/* <Header /> */}
-          <main className="flex-1 container py-4">
+          <Header />
+          <main className="flex-1 container py-4 mx-auto">
             <Routes>
               <Route path="/" element={<HomePage />} />
               {/* <Route path="/login" element={<LoginPage />} />
@@ -31,7 +31,7 @@ function App() {
               />
             </Routes>
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>
