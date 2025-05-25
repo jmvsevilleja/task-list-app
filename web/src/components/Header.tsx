@@ -18,19 +18,26 @@ export default function Header() {
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {!isAuthenticated ? (
               <>
-                <Link to="/login">
-                  <Button variant="ghost">Login</Button>
-                </Link>
-                <Link to="/register">
-                  <Button>Register</Button>
-                </Link>
+                <Button asChild variant="ghost">
+                  <Link to="/login">Login</Link>
+                </Button>
+
+                <Button asChild>
+                  <Link to="/register">Register</Link>
+                </Button>
               </>
             ) : (
               <>
-                <Link to="/tasks">
-                  <Button variant="ghost">Tasks</Button>
-                </Link>
-                <Button variant="ghost" onClick={logout}>
+                <Button asChild variant="ghost">
+                  <Link to="/tasks">Tasks </Link>
+                </Button>
+
+                <Button
+                  asChild
+                  variant="ghost"
+                  onClick={logout}
+                  className="cursor-pointer"
+                >
                   Logout
                 </Button>
               </>
