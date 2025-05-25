@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -101,10 +102,12 @@ export default function LoginPage() {
                     <Input type="password" placeholder="••••••••" {...field} />
                   </FormControl>
                   <FormMessage />
+                  <FormDescription className="text-sm text-muted-foreground">
+                    Demo account: john@example.com / password123
+                  </FormDescription>
                 </FormItem>
               )}
             />
-
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? (
                 <>

@@ -14,7 +14,12 @@ export const getTasks = async (req: CustomRequest, res: Response) => {
       where: { userId: req.userId },
       orderBy: { createdAt: "desc" },
     });
-    res.json(tasks);
+    const formattedTasks = tasks.map((task) => ({
+      ...task,
+      dueDate: task.dueDate ? task.dueDate.toISOString() : null,
+    }));
+
+    res.json(formattedTasks);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Something went wrong" });

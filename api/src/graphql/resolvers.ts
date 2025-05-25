@@ -10,10 +10,17 @@ export const resolvers = {
     tasks: async (_: any, __: any, context: any) => {
       if (!context.userId) throw new Error("Not authenticated");
 
-      return prisma.task.findMany({
+      const tasks = await prisma.task.findMany({
         where: { userId: context.userId },
         orderBy: { createdAt: "desc" },
       });
+
+      const formattedTasks = tasks.map((task) => ({
+        ...task,
+        dueDate: task.dueDate ? task.dueDate.toISOString() : null,
+      }));
+
+      return formattedTasks;
     },
   },
 
@@ -25,7 +32,7 @@ export const resolvers = {
         data: {
           title: input.title,
           content: input.content,
-          dueDate: input.dueDate ? new Date(input.dueDate) : null,
+          dueDate: input.dueDate ? new Date(input.dueDate).toISOString() : null,
           userId: context.userId,
         },
       });
@@ -41,16 +48,25 @@ export const resolvers = {
 
       if (!task) throw new Error("Task not found");
 
-      return prisma.task.update({
+      const updatedTask = await prisma.task.update({
         where: { id: parseInt(id) },
         data: {
           title: input.title || task.title,
           content: input.content !== undefined ? input.content : task.content,
-          dueDate: input.dueDate ? new Date(input.dueDate) : task.dueDate,
+          dueDate: input.dueDate
+            ? new Date(input.dueDate).toISOString()
+            : task.dueDate,
           completed:
             input.completed !== undefined ? input.completed : task.completed,
         },
       });
+
+      const formattedTask = {
+        ...updatedTask,
+        dueDate: updatedTask.dueDate ? updatedTask.dueDate.toISOString() : null,
+      };
+
+      return formattedTask;
     },
 
     deleteTask: async (_: any, { id }: any, context: any) => {

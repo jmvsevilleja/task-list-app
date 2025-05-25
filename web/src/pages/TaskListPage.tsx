@@ -140,7 +140,7 @@ export default function TaskListPage() {
 
         <Dialog>
           <DialogTrigger asChild>
-            <Button>
+            <Button className="cursor-pointer">
               <Plus className="mr-2 h-4 w-4" />
               Add Task
             </Button>
@@ -165,7 +165,9 @@ export default function TaskListPage() {
                 value={newTaskDueDate}
                 onChange={(e) => setNewTaskDueDate(e.target.value)}
               />
-              <Button onClick={handleAddTask}>Create Task</Button>
+              <Button onClick={handleAddTask} className="cursor-pointer">
+                Create Task
+              </Button>
             </div>
           </DialogContent>
         </Dialog>
@@ -186,6 +188,7 @@ export default function TaskListPage() {
             <TableRow key={task.id}>
               <TableCell>
                 <Checkbox
+                  className="cursor-pointer"
                   checked={task.completed}
                   onCheckedChange={() => handleToggleComplete(task)}
                 />
@@ -200,9 +203,13 @@ export default function TaskListPage() {
                   : "-"}
               </TableCell>
               <TableCell className="text-right">
-                <Dialog>
+                <Dialog
+                  open={editTask !== null}
+                  onOpenChange={(open) => !open && setEditTask(null)}
+                >
                   <DialogTrigger asChild>
                     <Button
+                      className="cursor-pointer"
                       variant="ghost"
                       size="icon"
                       onClick={() => setEditTask(task)}
@@ -234,16 +241,22 @@ export default function TaskListPage() {
                           setEditTask({
                             ...editTask,
                             dueDate: e.target.value
-                              ? `${e.target.value}T00:00:00`
+                              ? `${e.target.value}T00:00:00.00Z`
                               : null,
                           })
                         }
                       />
-                      <Button onClick={handleSaveEdit}>Save Changes</Button>
+                      <Button
+                        onClick={handleSaveEdit}
+                        className="cursor-pointer"
+                      >
+                        Save Changes
+                      </Button>
                     </div>
                   </DialogContent>
                 </Dialog>
                 <Button
+                  className="cursor-pointer"
                   variant="ghost"
                   size="icon"
                   onClick={() => handleDeleteTask(task.id)}
