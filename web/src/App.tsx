@@ -18,7 +18,7 @@ function App() {
         <Router>
           <div className="flex flex-col min-h-screen">
             <Header />
-            <main className="flex-1 container py-4 mx-auto">
+            <main className="flex-1 container py-4 mx-auto max-w-5xl">
               <AppRoutes />
             </main>
             <Footer />

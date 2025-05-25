@@ -1,89 +1,123 @@
 import { Link } from "react-router-dom";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-background border-t">
-      <div className="container mx-auto py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-4">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="text-xl font-bold">Task List App</span>
+    <footer style={{ backgroundColor: "#23aaaa" }} className="text-white ">
+      <div className="container mx-auto py-8 max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          <div>
+            <Link to="/" className="block mb-4">
+              <img
+                src="/carelulu_logo_square_white.png"
+                alt="CareLuLu Logo"
+                className="w-40"
+              />
             </Link>
-            <span className="text-sm text-muted-foreground">
-              © {currentYear} Task List App. All rights reserved.
-            </span>
+          </div>
+          <div>
+            <h3 className="font-bold mb-4">FOR PARENTS</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/">Parent Resources</Link>
+              </li>
+              <li>
+                <Link to="/">How It Works</Link>
+              </li>
+              <li>
+                <Link to="/">Testimonials</Link>
+              </li>
+              <li>
+                <Link to="/">Terms of Use</Link>
+              </li>
+              <li>
+                <Link to="/">Privacy Policy</Link>
+              </li>
+            </ul>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <nav className="flex items-center space-x-4 text-sm">
-              <Link
-                to="/privacy"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                to="/contact"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Contact
-              </Link>
-            </nav>
+          <div>
+            <h3 className="font-bold mb-4">FOR PROVIDERS</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/">Provider Resources</Link>
+              </li>
+              <li>
+                <Link to="/">How It Works</Link>
+              </li>
+              <li>
+                <Link to="/">Testimonials</Link>
+              </li>
+              <li>
+                <Link to="/">Terms and Conditions</Link>
+              </li>
+              <li>
+                <Link to="/">List Your Program</Link>
+              </li>
+            </ul>
+          </div>
 
-            <Separator orientation="vertical" className="h-6 hidden md:block" />
+          <div>
+            <h3 className="font-bold mb-4">MORE</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/">About Us</Link>
+              </li>
+              <li>
+                <Link to="/">Press</Link>
+              </li>
+              <li>
+                <Link to="/">Jobs</Link>
+              </li>
+              <li>
+                <Link to="/">Contact Us</Link>
+              </li>
+            </ul>
+          </div>
 
-            <div className="flex items-center space-x-2">
-              <Button variant="ghost" size="icon" asChild>
-                <a
-                  href="https://github.com/yourusername/Task List App"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-4 w-4" />
+          <div>
+            <div className="flex space-x-4 mt-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-black"
+                asChild
+              >
+                <a href="#" rel="noopener noreferrer">
+                  <Facebook className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a
-                  href="https://twitter.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="h-4 w-4" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-black"
+                asChild
+              >
+                <a href="#" rel="noopener noreferrer">
+                  <Twitter className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a
-                  href="https://linkedin.com/in/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-4 w-4" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-black"
+                asChild
+              >
+                <a href="#" rel="noopener noreferrer">
+                  <Instagram className="h-5 w-5" />
                 </a>
               </Button>
             </div>
+            <div className="mt-4 ml-4">
+              <Button
+                variant="outline"
+                className="bg-white text-black hover:bg-gray-100 cursor-pointer"
+              >
+                Help Center
+              </Button>
+            </div>
           </div>
-        </div>
-
-        <div className="mt-8 text-center text-xs text-muted-foreground">
-          <p>
-            Task List App is a task management application built with Reacta and
-            Node.js.
-          </p>
-          <p className="mt-1">Made with ❤️ by Jess</p>
         </div>
       </div>
     </footer>

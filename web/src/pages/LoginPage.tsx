@@ -36,8 +36,8 @@ export default function LoginPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "john@example.com",
+      password: "password123",
     },
   });
 
@@ -63,7 +63,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-140px)]">
+    <div className="flex items-center justify-center min-h-[calc(100vh-340px)]">
       <div className="w-full max-w-md p-8 space-y-8 bg-card rounded-lg shadow-lg">
         <div className="space-y-2 text-center">
           <h1 className="text-2xl font-bold">Login</h1>
@@ -108,7 +108,11 @@ export default function LoginPage() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button
+              type="submit"
+              className="w-full cursor-pointer"
+              disabled={loading}
+            >
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -127,7 +131,7 @@ export default function LoginPage() {
             to="/register"
             className="font-medium text-primary hover:underline"
           >
-            Register
+            Sign up
           </Link>
         </div>
       </div>

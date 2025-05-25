@@ -19,7 +19,7 @@ export default function HomePage() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-140px)] py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-340px)] py-12 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
           Manage Your Tasks <span className="text-primary">Effortlessly</span>
@@ -89,13 +89,13 @@ export default function HomePage() {
             <Button asChild variant="outline" size="lg">
               <Link to="/login">
                 <LogInIcon className="mr-2 h-4 w-4" />
-                Sign In
+                Log In
               </Link>
             </Button>
             <Button asChild size="lg">
               <Link to="/register">
                 <UserPlusIcon className="mr-2 h-4 w-4" />
-                Register
+                Sign Up
               </Link>
             </Button>
           </>

@@ -82,7 +82,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-140px)]">
+    <div className="flex items-center justify-center min-h-[calc(100vh-340px)]">
       <div className="w-full max-w-md p-8 space-y-8 bg-card rounded-lg shadow-lg">
         <div className="text-center">
           <h1 className="text-3xl font-bold tracking-tight">
@@ -174,7 +174,7 @@ export default function RegisterPage() {
             to="/login"
             className="font-medium text-primary hover:underline"
           >
-            Sign in
+            Log in
           </Link>
         </div>
       </div>
