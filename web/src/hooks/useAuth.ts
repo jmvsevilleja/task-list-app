@@ -4,12 +4,14 @@ import { useApolloClient } from "@apollo/client";
 
 const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const client = useApolloClient();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
+    setIsLoading(false);
   }, []);
 
   const login = useCallback((token: string) => {
@@ -24,7 +26,7 @@ const useAuth = () => {
     navigate("/");
   }, [client, navigate]);
 
-  return { isAuthenticated, login, logout };
+  return { isAuthenticated, isLoading, login, logout };
 };
 
 export default useAuth;
