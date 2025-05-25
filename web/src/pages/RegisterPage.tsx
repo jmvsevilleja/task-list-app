@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
-import useAuth from "@/hooks/useAuth";
+import { useAuth } from "@/context/AuthContext";
 import { toast } from "sonner";
 
 // Form validation schema
