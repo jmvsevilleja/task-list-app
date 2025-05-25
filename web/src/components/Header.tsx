@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import useAuth from "../hooks/useAuth";
+import useAuth from "@/hooks/useAuth";
 
 export default function Header() {
   const { isAuthenticated, logout } = useAuth();
@@ -33,7 +33,6 @@ export default function Header() {
                 </Button>
 
                 <Button
-                  asChild
                   variant="ghost"
                   onClick={logout}
                   className="cursor-pointer"

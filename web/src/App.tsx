@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage";
 import AuthRoute from "./components/AuthRoute";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-// import TaskListPage from "./pages/TaskListPage";
+import TaskListPage from "./pages/TaskListPage";
 import { Toaster } from "@/components/ui/sonner";
 
 function App() {
@@ -25,8 +25,7 @@ function App() {
                 path="/tasks"
                 element={
                   <AuthRoute>
-                    <>TaskListPage</>
-                    {/* <TaskListPage /> */}
+                    <TaskListPage />
                   </AuthRoute>
                 }
               />
