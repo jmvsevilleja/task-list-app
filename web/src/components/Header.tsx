@@ -90,7 +90,7 @@ export default function Header() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={logout} className="cursor-pointer">
-                    Logout
+                    Log Out
                   </DropdownMenuItem>
                 </>
               )}

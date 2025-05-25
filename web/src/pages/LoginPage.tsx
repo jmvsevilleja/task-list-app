@@ -116,10 +116,10 @@ export default function LoginPage() {
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Logging in...
+                  Logging In...
                 </>
               ) : (
-                "Login"
+                "Log In"
               )}
             </Button>
           </form>
@@ -131,7 +131,7 @@ export default function LoginPage() {
             to="/register"
             className="font-medium text-primary hover:underline"
           >
-            Sign up
+            Sign Up
           </Link>
         </div>
       </div>
