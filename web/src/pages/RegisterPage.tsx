@@ -69,7 +69,7 @@ export default function RegisterPage() {
       if (data?.register?.token) {
         login(data.register.token);
         navigate("/tasks");
-        toast("Registration successful", {
+        toast.success("Registration successful", {
           description: "Your account has been created.",
         });
       }

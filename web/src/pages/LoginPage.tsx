@@ -49,7 +49,7 @@ export default function LoginPage() {
       if (data?.login?.token) {
         login(data.login.token);
         navigate("/tasks");
-        toast("Success", {
+        toast.success("Success", {
           description: "Logged in successfully",
         });
       }
@@ -81,7 +81,7 @@ export default function LoginPage() {
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="m@example.com"
+                      placeholder="email@example.com"
                       type="email"
                       {...field}
                     />
