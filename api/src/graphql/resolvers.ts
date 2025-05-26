@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { logger } from "../utils/logger";
+import { Task } from "../interfaces/Task";
 
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
@@ -9,7 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 export const resolvers = {
   Query: {
     tasks: async (_: any, __: any, context: any) => {
-      logger.info('Fetching tasks for user', { userId: context.userId });
+      logger.info("Fetching tasks for user", { userId: context.userId });
       if (!context.userId) throw new Error("Not authenticated");
 
       const tasks = await prisma.task.findMany({
@@ -17,8 +18,10 @@ export const resolvers = {
         orderBy: { createdAt: "desc" },
       });
 
-      logger.debug(`Found ${tasks.length} tasks for user`, { userId: context.userId });
-      const formattedTasks = tasks.map((task) => ({
+      logger.debug(`Found ${tasks.length} tasks for user`, {
+        userId: context.userId,
+      });
+      const formattedTasks = tasks.map((task: Task) => ({
         ...task,
         dueDate: task.dueDate ? task.dueDate.toISOString() : null,
       }));
@@ -29,7 +32,7 @@ export const resolvers = {
 
   Mutation: {
     createTask: async (_: any, { input }: any, context: any) => {
-      logger.info('Creating task', { userId: context.userId, taskData: input });
+      logger.info("Creating task", { userId: context.userId, taskData: input });
       if (!context.userId) throw new Error("Not authenticated");
 
       return prisma.task.create({
@@ -43,7 +46,7 @@ export const resolvers = {
     },
 
     updateTask: async (_: any, { id, input }: any, context: any) => {
-      logger.info('Updating task', { taskId: id, userId: context.userId });
+      logger.info("Updating task", { taskId: id, userId: context.userId });
       if (!context.userId) throw new Error("Not authenticated");
 
       // Verify task belongs to user
@@ -75,7 +78,7 @@ export const resolvers = {
     },
 
     deleteTask: async (_: any, { id }: any, context: any) => {
-      logger.info('Deleting task', { taskId: id, userId: context.userId });
+      logger.info("Deleting task", { taskId: id, userId: context.userId });
       if (!context.userId) throw new Error("Not authenticated");
 
       // Verify task belongs to user
@@ -91,7 +94,7 @@ export const resolvers = {
     },
 
     login: async (_: any, { email, password }: any) => {
-      logger.info('Login attempt', { email });
+      logger.info("Login attempt", { email });
       const user = await prisma.user.findUnique({ where: { email } });
       if (!user) throw new Error("Invalid credentials");
 
@@ -106,7 +109,7 @@ export const resolvers = {
     },
 
     register: async (_: any, { name, email, password }: any) => {
-      logger.info('Registration attempt', { email });
+      logger.info("Registration attempt", { email });
       const existingUser = await prisma.user.findUnique({ where: { email } });
       if (existingUser) throw new Error("User already exists");
 
@@ -130,7 +133,7 @@ export const resolvers = {
 
   Task: {
     user: (parent: any) => {
-      logger.debug('Fetching user for task', { taskId: parent.id });
+      logger.debug("Fetching user for task", { taskId: parent.id });
       return prisma.user.findUnique({ where: { id: parent.userId } });
     },
   },

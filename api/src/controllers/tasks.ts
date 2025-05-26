@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
+import { Task } from "../interfaces/Task";
 
-// Add custom interface for Request
+// Remove the local Task interface and use the imported one instead
 interface CustomRequest extends Request {
   userId?: number;
 }
@@ -14,7 +15,7 @@ export const getTasks = async (req: CustomRequest, res: Response) => {
       where: { userId: req.userId },
       orderBy: { createdAt: "desc" },
     });
-    const formattedTasks = tasks.map((task) => ({
+    const formattedTasks = tasks.map((task: Task) => ({
       ...task,
       dueDate: task.dueDate ? task.dueDate.toISOString() : null,
     }));
